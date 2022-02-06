@@ -10,11 +10,11 @@ function onClick() {
 	}).then(server =>{
 		// ３-1．「Service」を指定, ServiceのUniform Type Identifierを指定
 		console.log('31. service', server);
-		return server.getPrimaryService('0000FFE0-0000-1000-8000-00805f9b34fb');
+		return server.getPrimaryService(getCanonicalUUID(0xFFE0));
 	}).then(service =>{
 		// ３-2．「Characteristc」を指定, CharacteristcのUniform Type Identifierを指定
 		console.log('32. charcteristc', charcteristc);
-		return service.getCharacteristic('0000FFE1-0000-1000-8000-00805f9b34fb');
+		return service.getCharacteristic(getCanonicalUUID(0xFFE1));
 	}).then((characteristic)  => {
 		//４．受信準備を行う
 		return characteristic.startNotifications().then(char => {
