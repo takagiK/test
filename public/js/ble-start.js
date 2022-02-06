@@ -2,7 +2,7 @@ function onClick() {
 	// １．BLEデバイスをスキャンする
 	navigator.bluetooth.requestDevice({
 		acceptAllDevices: true, // 全てのデバイスを対象にスキャンを実施する
-		optionalServices: ['FFE0'] // 利用するServiceのUniform Type Identifierを予め指定する
+		// optionalServices: ['0xFFE0'] // 利用するServiceのUniform Type Identifierを予め指定する
 	}).then(device => {
 		// ２．デバイスに接続
 		console.log('2. device', device);
@@ -10,11 +10,11 @@ function onClick() {
 	}).then(server =>{
 		// ３-1．「Service」を指定, ServiceのUniform Type Identifierを指定
 		console.log('31. service', server);
-		return server.getPrimaryService('FFE0');
+		return server.getPrimaryService('0xFFE0');
 	}).then(service =>{
 		// ３-2．「Characteristc」を指定, CharacteristcのUniform Type Identifierを指定
 		console.log('32. charcteristc', charcteristc);
-		return service.getCharacteristic('FFE1');
+		return service.getCharacteristic('0xFFE1');
 	}).then((characteristic)  => {
 		//４．受信準備を行う
 		return characteristic.startNotifications().then(char => {
