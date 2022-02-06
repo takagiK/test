@@ -2,7 +2,7 @@ function onClick() {
 	// １．BLEデバイスをスキャンする
 	navigator.bluetooth.requestDevice({
 		acceptAllDevices: true, // 全てのデバイスを対象にスキャンを実施する
-		// optionalServices: ['0000ffe0-0000-1000-8000-00805f9b34fb'] // 利用するServiceのUniform Type Identifierを予め指定する
+		optionalServices: ['0000ffe0-0000-1000-8000-00805f9b34fb'] // 利用するServiceのUniform Type Identifierを予め指定する
 	}).then(device => {
 		// ２．デバイスに接続
 		console.log('2. device', device);
