@@ -13,10 +13,11 @@ function onClick() {
 		return server.getPrimaryService('0000ffe0-0000-1000-8000-00805f9b34fb');
 	}).then(service =>{
 		// ３-2．「Characteristc」を指定, CharacteristcのUniform Type Identifierを指定
-		console.log('32. charcteristc', charcteristc);
+		console.log('32. service', service);
 		return service.getCharacteristic('0000ffe1-0000-1000-8000-00805f9b34fb');
 	}).then((characteristic)  => {
 		//４．受信準備を行う
+		console.log('4. characteristic', characteristic);
 		return characteristic.startNotifications().then(char => {
 			//５．受信したバイナリを解析、処理の実施
 			characteristic.addEventListener('characteristicvaluechanged', (event) => {
